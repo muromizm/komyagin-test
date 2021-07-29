@@ -1,16 +1,5 @@
 <?php
-
-use App\Models\ApiProvider;
-
 /** @var string $message */
-
-if (! ($provider = (new ApiProvider())->getApi(ApiProvider::API_NAME_1))) {
-    ?><p>Не удалось загрузить клиент API.</p><?php
-
-    exit();
-}
-
-$shows = $provider->getShows();
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
