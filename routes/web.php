@@ -29,3 +29,5 @@ Route::get('/event/{showId}/{eventId}', function ($showId, $eventId) {
         'eventId' => $eventId,
     ]);
 });
+
+Route::post('/reserve', 'App\Http\Controllers\Controller@reserve');
