@@ -21,6 +21,12 @@ class Controller extends BaseController
             ]);
         }
 
+        if (! $request->get('places')) {
+            return view('reserve', [
+                'message' => 'Не выбраны места для бронирования',
+            ]);
+        }
+
         $result = $provider->reserveEventPlaces(
             $request->get('eventId'),
             $request->get('name'),
