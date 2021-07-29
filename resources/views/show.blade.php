@@ -2,13 +2,15 @@
 
 use App\Models\ApiProvider;
 
+/** @var int $id */
+
 if (! ($provider = (new ApiProvider())->getApi(ApiProvider::API_NAME_1))) {
     ?><p>Не удалось загрузить клиент API.</p><?php
 
     exit();
 }
 
-$shows = $provider->getShows();
+$events = $provider->getShowEvents($id);
 ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -30,9 +32,10 @@ $shows = $provider->getShows();
         </style>
     </head>
     <body class="antialiased">
-        <h1>Список мероприятий</h1>
-        <?php foreach ($shows as $show) { ?>
-            <p><a href="/show/<?=$show['id']?>"><?=$show['name']?></a></p>
+        <h1>Мероприятие #<?=$id?> (<a href="/">все мероприятия</a>)</h1>
+        <h2>Список событий мероприятия</h2>
+        <?php foreach ($events as $event) { ?>
+            <p><a href="/event/<?=$id?>/<?=$event['id']?>"><?=$event['date']?></a></p>
         <?php } ?>
 
         <script src="/js/app.js"></script>
